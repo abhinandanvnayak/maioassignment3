@@ -1,3 +1,5 @@
+﻿import os
+
 from fastapi.testclient import TestClient
 
 from app.main import app
@@ -22,7 +24,7 @@ def test_health_returns_status_and_model_version() -> None:
     response = client.get("/health")
 
     assert response.status_code == 200
-    assert response.json() == {"status": "ok", "model_version": "v0.1"}
+    assert response.json() == {"status": "ok", "model_version": os.getenv("MODEL_VERSION", "v0.1")}
 
 
 def test_predict_returns_numeric_prediction() -> None:
