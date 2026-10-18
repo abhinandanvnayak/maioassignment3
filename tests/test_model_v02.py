@@ -5,7 +5,7 @@ import numpy as np
 import pytest
 from sklearn.linear_model import Ridge
 
-import src.train as train
+from src import train
 
 
 def test_v02_trains_ridge_model(tmp_path, monkeypatch):
